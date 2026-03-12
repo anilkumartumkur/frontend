@@ -54,13 +54,13 @@ pipeline {
                 )]) {
                     sh '''
                         git clone https://$GIT_USERNAME:$GIT_PASSWORD@github.com/ITkannadigaru/GitOps.git gitops
-                        cd gitops/base/frontend
+                        cd gitops/base/frontend/
 
                         git config user.email "jenkins@ci.com"
                         git config user.name "jenkins"
 
                         # Update image tag
-                        sed -i "s|image: .*frontend.*|image: ${IMAGE_NAME}|g" frontend/deployment.yaml
+                        sed -i "s|image: .*frontend.*|image: ${IMAGE_NAME}|g" deployment.yaml
 
                         git add .
                         git commit -m "Update frontend image to ${IMAGE_NAME}"
